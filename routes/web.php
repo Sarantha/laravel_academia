@@ -20,7 +20,16 @@ Route::get('/about', function () {
 Route::get('/services', function () {
     return view('services');
 });
+Route::get('/students' , ['middleware'=>'auth',function () {
+    return view('students');
+}]);
+Route::get('/admin', ['middleware'=>'auth', function () {
+    return view('admin');
+}]);
+Route::get('/teachers',['middleware'=>'auth', function () {
+    return view('teachers');
+}]);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');

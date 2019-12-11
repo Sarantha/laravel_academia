@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use User;
+use Illuminate\Http\Request; 
 class LoginController extends Controller
 {
     /*
@@ -26,15 +27,13 @@ class LoginController extends Controller
      * @var string
      */
     //protected $redirectTo = '/home';
-    protected function authenticated($request,$user){
-        if($user->user_role == ('admin')){
-            return view('/admin');
-        }elseif($user->user_role == ('teacher')){
-            return view('/teachers');
-        }elseif($user->user_role == ('student')){
-            return view('/students');
+    protected function authenticated(Request $request,$user){
+        if($user->getRole() == 'admin'){
+            return redirect ('admin');
+        }elseif($user->getRole() == 'student'){
+            return redirect ('students');
         }else{
-            return view('/homepage');
+            return redirect ('teachers');
         }
     }
     /**
