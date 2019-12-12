@@ -29,7 +29,7 @@ Route::get('/admin', ['middleware'=>'auth', function () {
 Route::get('/teachers',['middleware'=>'auth', function () {
     return view('teachers');
 }]);
-
+Route::resource('teacher','TeachersController');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
