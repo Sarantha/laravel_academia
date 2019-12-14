@@ -17,6 +17,7 @@ class TeachersController extends Controller
     public function index()
     {
         $teachers = Teacher::all();
+        //return view('inc.list')->with('teachers', $teachers);
         return view('admin')->with('teachers', $teachers);
     }
 
@@ -111,6 +112,10 @@ class TeachersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $user = User::find($id);
+        $teacher->delete();
+        $user->delete();
+        return redirect('admin')->with('success', 'Teacher Removed');
     }
 }

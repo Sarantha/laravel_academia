@@ -30,6 +30,8 @@ Route::get('/teachers',['middleware'=>'auth', function () {
     return view('teachers');
 }]);
 Route::resource('teacher','TeachersController');
+Route::get('inc.list', 'TeachersController@index');
+Route::get('admin', 'TeachersController@index');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
