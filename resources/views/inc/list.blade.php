@@ -30,7 +30,7 @@
             <tr><td>{{$teacher->name}}</td><td>{{$teacher->subject}}</td><td>{{$teacher->email}}</td><td><a style="color:white;text-decoration:none"type="button" class="btn btn-primary">Edit</a> | {!!Form::open(['action'=>['TeachersController@destroy',$teacher->id],'method'=>'POST','class'=>'pull-right'])!!}
               {{Form::hidden('_method','DELETE')}}
               {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
-          {!!Form::close()!!}</td><tr>
+              {!!Form::close()!!}</td><tr>
             @endforeach
             </tbody>
         </table>
