@@ -96,7 +96,7 @@
                 </thead>
                 <tbody>
                 @foreach($teachers as $teacher)
-                <tr><td>{{$teacher->name}}</td><td>{{$teacher->subject}}</td><td>{{$teacher->email}}</td><td> {!!Form::open(['action'=>['TeachersController@destroy',$teacher->id],'method'=>'POST','class'=>'pull-right'])!!}{{Form::hidden('_method','DELETE')}}{{Form::submit('Remove',['class'=>'btn btn-danger'])}}{!!Form::close()!!}</td><tr>
+                  <tr><td>{{$teacher->name}}</td><td>{{$teacher->subject}}</td><td>{{$teacher->email}}</td><td> {!!Form::open(['action'=>['TeachersController@destroy',$teacher->id],'method'=>'POST','class'=>'pull-right'])!!}{{Form::hidden('_method','DELETE')}}{{Form::submit('Remove',['class'=>'btn btn-danger'])}}{!!Form::close()!!}</td><tr>
                 @endforeach
                 </tbody>
             </table>
