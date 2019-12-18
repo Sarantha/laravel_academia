@@ -31,8 +31,10 @@ Route::get('/teachers',['middleware'=>'auth', function () {
 }]);
 Route::resource('teacher','TeachersController');
 Route::resource('files','FilesController');
+Route::resource('teachers','FilesController@destroy');
 Route::get('inc.list', 'TeachersController@index');
-Route::get('students','FilesController@index');
+Route::get('teachers','FilesController@index');
+Route::get('students','FilesController@downloadFunc');
 Route::get('admin', 'TeachersController@index');
 Auth::routes();
 

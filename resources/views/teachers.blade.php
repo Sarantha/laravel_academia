@@ -48,11 +48,14 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul class="navbar-nav mr-auto"  style="cursor:pointer">
                             <li class="nav-item">
-                              <a class="nav-link" onclick="document.getElementById('upload_file').style.display='inline';document.getElementById('manage_profile').style.display='none';">Upload Content</a>
+                              <a class="nav-link" onclick="document.getElementById('upload_file').style.display='inline';document.getElementById('manage_profile').style.display='none';document.getElementById('uploaded_files').style.display='none';">Upload Content</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" onclick="document.getElementById('manage_profile').style.display='inline';document.getElementById('upload_file').style.display='none';">Manage Profile</a>
+                              <a class="nav-link" onclick="document.getElementById('manage_profile').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('uploaded_files').style.display='none';">Manage Profile</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="document.getElementById('uploaded_files').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('manage_profile').style.display='none';">Uploaded Files</a>
+                              </li>
                           </ul> 
                         </div>
                       </nav>
@@ -92,6 +95,41 @@
                           <h5 class="card-title">Card title</h5>
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <div id="uploaded_files" style="display: none">
+                <div class="jumbotron">
+                    <div class="row justify-content-center">
+                      <div class="col-md-12" width="100%">
+                        <div class="card">
+                          <div class="card-header">
+                            Files List
+                            <div style="float:right">
+                               Total Number of files uploaded : {{count($files)}}
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col">File Name</th>
+                                  <th scope="col">Uploaded Date</th>
+                                  <th scope="col">File Description</th>
+                                  <th scope="col">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @foreach($files as $file)
+                                    <tr><td>{{$file->title}}</td><td>{{$file->created_at}}</td><td>{{$file->description}}</td><td><button class="btn btn-danger">{!!Form::open(['action'=>['FilesController@destroy',$file->id],'method'=>'POST','class'=>'pull-right'])!!}{{Form::hidden('_method','DELETE')}}{{Form::submit('Remove',['class'=>'btn btn-danger'])}}{!!Form::close()!!}</button></td><tr>
+                                @endforeach
+                                {{$files->links()}}
+                              </tbody>
+                          </table>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -16,9 +16,9 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $files = File::all();
+        $files = File::orderBy('created_at','desc')->paginate(15);
         //return view('inc.list')->with('teachers', $teachers);
-        return view('students')->with('files', $files);
+        return view('teachers')->with('files', $files);
     }
 
     /**
@@ -26,6 +26,10 @@ class FilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function downloadFunc(){
+        $files = File::orderBy('created_at','desc')->paginate(3);
+        return view('students',compact('files'));
+    }
     public function create()
     {
         //
@@ -58,6 +62,7 @@ class FilesController extends Controller
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         $extension = $request->file('upload_file')->getClientOriginalExtension();
         $fileNameToStore = $filename.'-'.time().'.'.$extension;
+        //$path = $request->file('upload_file')->store('toPath', ['disk' => 'my_files', $fileNameToStore]);
         $path = $request->file('upload_file')->storeAs('public/uploads', $fileNameToStore);
 
         $file = new File;
@@ -121,6 +126,8 @@ class FilesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file = File::find($id);
+        $file->delete();
+        return redirect('teachers')->with('success', 'File Removed Successfully');
     }
 }
