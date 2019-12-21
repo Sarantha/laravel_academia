@@ -31,6 +31,7 @@ Route::get('/teachers',['middleware'=>'auth', function () {
 }]);
 Route::resource('teacher','TeachersController');
 Route::resource('files','FilesController');
+Route::resource('students','StudentsController');
 Route::resource('teachers','FilesController@destroy');
 Route::get('inc.list', 'TeachersController@index');
 Route::get('teachers','FilesController@index');

@@ -48,14 +48,17 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul class="navbar-nav mr-auto"  style="cursor:pointer">
                             <li class="nav-item">
-                              <a class="nav-link" onclick="document.getElementById('upload_file').style.display='inline';document.getElementById('manage_profile').style.display='none';document.getElementById('uploaded_files').style.display='none';">Upload Content</a>
+                              <a class="nav-link" onclick="document.getElementById('upload_file').style.display='inline';document.getElementById('manage_profile').style.display='none';document.getElementById('uploaded_files').style.display='none';document.getElementById('add_students').style.display='none';">Upload Content</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" onclick="document.getElementById('manage_profile').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('uploaded_files').style.display='none';">Manage Profile</a>
+                              <a class="nav-link" onclick="document.getElementById('manage_profile').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('uploaded_files').style.display='none';document.getElementById('add_students').style.display='none';">Manage Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" onclick="document.getElementById('uploaded_files').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('manage_profile').style.display='none';">Uploaded Files</a>
-                              </li>
+                                <a class="nav-link" onclick="document.getElementById('uploaded_files').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('manage_profile').style.display='none';document.getElementById('add_students').style.display='none';">Uploaded Files</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" onclick="document.getElementById('add_students').style.display='inline';document.getElementById('upload_file').style.display='none';document.getElementById('manage_profile').style.display='none';document.getElementById('uploaded_files').style.display='none';">Add Students</a>
+                            </li>
                           </ul> 
                         </div>
                       </nav>
@@ -92,9 +95,8 @@
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <h5 class="card-title">{{auth()->user()->name}}</h5>
+                          
                         </div>
                       </div>
                     </div>
@@ -135,6 +137,44 @@
                     </div>
                   </div>
             </div>
+
+            <div id="add_students" style="padding: 25px;" style="display: none">
+              <form method="POST" action="{{url('students')}}">
+                {{csrf_field()}}
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Name</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="name">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Class Location</label>
+                        <select class="form-control" id="inputPassword4" name="class">
+                          <option value="Badulla" name="Badulla">Badulla</option>
+                          <option value="Bandarawela" name="Bandarawela">Bandarawela</option>
+                          <option value="Kandy" name="Kandy">Kandy</option>
+                        </select> 
+                      </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">NIC Number</label>
+                          <input type="text" class="form-control" id="inputEmail4" name="nic_no">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPassword4">Phone No.</label>
+                          <input type="text" class="form-control" id="inputPassword4" name="phone">
+                        </div>
+                      </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" name='email'>
+                          </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Register</button>
+                  </form>
+              </div>
         </div>
     </div>
 </div>

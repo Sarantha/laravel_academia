@@ -2,7 +2,7 @@
           <nav class="navbar navbar-expand-md navbar-dark bg-dark">
               <div class="container">
                   <a class="navbar-brand" href="{{ url('/') }}">
-                      Basic Functions
+                    <a href="/" class="scrollto" style="color:#18d26e">රසායන විද්‍යාව</a>
                   </a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                       <span class="navbar-toggler-icon"></span>
@@ -12,14 +12,16 @@
                       <!-- Left Side Of Navbar -->
                       <ul class="navbar-nav mr-auto">
                           <li class="nav-item">
-                              <a class="nav-link" href="/">Home </a>
+                              <a class="nav-link" href="/" style="color:white">මුල් පිටුව </a>
                             </li>
+                            <!--
                             <li class="nav-item">
                                 <a class="nav-link" href="/about">About</a>
                             </li>
                             <li class="nav-item">
                                     <a class="nav-link" href="/services">Services</a>
                             </li>
+                            -->
                       </ul>
   
                       <!-- Right Side Of Navbar -->
@@ -27,13 +29,15 @@
                           <!-- Authentication Links -->
                           @guest
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                  <a class="nav-link" style="color:white" href="{{ route('login') }}">{{ __('ඇතුල් වන්න') }}</a>
                               </li>
+                              <!--
                               @if (Route::has('register'))
                                   <li class="nav-item">
                                       <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                   </li>
                               @endif
+                                -->
                           @else
                               <li class="nav-item dropdown">
                                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
